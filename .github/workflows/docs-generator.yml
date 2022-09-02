@@ -5,6 +5,8 @@ on:
     types:
       - published
 
+permissions: write-all
+
 concurrency:
   group: "docs"
   cancel-in-progress: true
