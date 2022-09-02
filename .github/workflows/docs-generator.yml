@@ -17,7 +17,4 @@ jobs:
     steps:
     - name: Trigger generator
       run: |
-        echo ${{ toJSON(github.event) }}
-        curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" \
-          https://api.github.com/repos/maxhr/near--docs/dispatches \
-          -d '{"event_type":"release-publish","client_payload":{"source_repo":"maxhr/near--near-api-js","builder_name":"near-api-js","release_version":"${{ github.event.tag_name }}"}}'
+        curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" https://api.github.com/repos/maxhr/near--docs/dispatches -d '{"event_type":"release-publish","client_payload":{"source_repo":"maxhr/near--near-api-js","builder_name":"near-api-js","release_version":"${{ github.event.tag_name }}"}}'
