@@ -15,4 +15,14 @@ jobs:
     steps:
     - name: Trigger generator
       run: |
-        curl -i -v -X POST -H "Authorization: Bearer ${{ secrets.DOCS_BOT_SECRET }}" https://docs-bot.vercel.app/api/on-release -d '{"event_type":"release-publish","client_payload":{"source_repo":"maxhr/near--near-api-js","builder_name":"near-api-js","release_version":"${{ github.ref_name }}"}}'
+        curl -i -v --location --request POST 'https://docs-bot.vercel.app/api/on-release' \
+        --header 'Authorization: Bearer ${{ secrets.DOCS_BOT_SECRET }}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "event_type": "release-publish",
+          "client_payload": {
+            "source_repo": "maxhr/near--near-api-js",
+            "builder_name": "near-api-js",
+            "release_version": "${{ github.ref_name }}"
+          }
+        }'
