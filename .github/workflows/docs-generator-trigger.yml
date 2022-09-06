@@ -1,4 +1,4 @@
-name: Trigger Docs Generator
+name: Docs Generator trigger
 
 on:
   release:
